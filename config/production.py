@@ -1,4 +1,5 @@
 #서버 환경 담당
+from config.default import *
 from logging.config import dictConfig
 
 dictConfig({
@@ -12,7 +13,7 @@ dictConfig({
         'file': {
             'level': 'INFO',
             'class': 'logging.handlers.RotatingFileHandler',
-            'filename': os.path.join(BASE_DIR, 'logs/myproject.log'),
+            'filename': os.path.join(BASE_DIR, 'logs/cp1.log'),
             'maxBytes': 1024 * 1024 * 5,  # 5 MB
             'backupCount': 5,
             'formatter': 'default',
