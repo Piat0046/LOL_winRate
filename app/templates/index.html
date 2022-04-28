@@ -9,13 +9,12 @@
   </head>
   <body style="background-color: #6495ED">
     <div class="text-center">
-      <img src="{{ url_for('static', filename='img/riot.png')}}" width="400">
+      <img src="{{url_for('static', filename='img/riot.png')}}" width="400">
     </div>  
     <div style="margin-top : -100">
-        <form method="GET" action="/result">
+        <form method="POST" action="{{url_for('predict.result')}}">
             <div class="container-lg" style="float: none; margin:100 auto;">
-                <div class="col-md-3" style="float: none; margin:0 auto;">
-                    
+                <div class="col-md-3" style="float: none; margin:0 auto;">  
                 <label> Summoner name &nbsp;<input type="text" size="19" name="username" placeholder="소환사 이름을 입력하세요."></label><br>           
                 <div style="margin-top : 20px; margin-left : 100;">
                 <button type="submit" class="btn btn-outline-primary btn-lg">이름 전송</button>

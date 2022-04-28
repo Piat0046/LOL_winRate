@@ -1,6 +1,6 @@
 import imp
 from name import sumoners
-from riot_api.api import actgameinfo
+from api import actgameinfo
 from pprint import pprint
 from mongodb import save_mongo, del_mongo
 

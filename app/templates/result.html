@@ -18,7 +18,7 @@
         <div class="container-lg" style="float: none; margin:0 auto;text-align:center;">
                     <h2>{{m}}</h2>            
         </div>
-    <form method="GET" action="/">
+    <form method="POST" action="{{url_for('main.index')}}">
         <div class="container-lg" style="float: none; margin:20 auto;">
             <div style="margin-left : 590;">
             <button type="submit" class="btn btn-outline-primary btn-lg">돌아가기</button>

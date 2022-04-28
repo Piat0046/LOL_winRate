@@ -53,9 +53,10 @@ def save_userinfo(data_name): #데이터베이스, 테이블(Collection), 입력
     col = db[COLLECTION_NAME]
     data_name['_id']=data_name['id']
     del data_name['id']
-    if data_name['_id'] in list(col.find_one({'_id':data_name['_id']}).values()):
-        col.update({'_id':data_name['_id']},data_name)
-    else:
+    try:
+        if data_name['_id'] in list(col.find_one({'_id':data_name['_id']}).values()):
+            col.update({'_id':data_name['_id']},data_name)
+    except:
         col.insert_one(data_name)
     return print('DB저장완료')
 
@@ -82,9 +83,10 @@ def save_mastery(data_name): #데이터베이스, 테이블(Collection), 입력�
 
     db = client[DATABASE_NAME]
     col = db[COLLECTION_NAME]
-    if data_name['_id'] in list(col.find_one({'_id':data_name['_id']}).values()):
-        col.update({'_id':data_name['_id']},data_name)
-    else:
+    try:
+        if data_name['_id'] in list(col.find_one({'_id':data_name['_id']}).values()):
+            col.update({'_id':data_name['_id']},data_name)
+    except:
         col.insert_one(data_name)
     return print('DB저장완료')
 
@@ -105,13 +107,6 @@ def save_log(data):
     count = col.find().count()
     data.update({'_id' : count+1, 'time' : datetime.now()})
     data.move_to_end('time', False)
-    try:
-        if 'ingame' in list[data.keys()] and True == data['ingame']:
-            doc = list()
-            keys = list(map(lambda x: [f'{x}p_id', f'{x}p', f'{x}score'], range(1,11)))
-            doc = list(map(lambda x : doc.extend(x), keys))
-            del data[0:3]
-            col.insert(data)
     col.insert(data)
     return print('DB저장완료')
 
