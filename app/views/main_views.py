@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, Blueprint
 import pickle
 import psycopg2
 
+from riot_api.mongodb import save_log
+
 bp = Blueprint('main', __name__, url_prefix='/')
 
 @bp.route('/')
@@ -16,6 +18,20 @@ def result(champ1=None):
     
     ## heroku-PostgresSQL 연결
     import psycopg2
+    import requests
+    import json
+    import time
+    import pprint
+    import pandas as pd
+    import copy
+    from riot_api.mongodb import save_mastery, save_mongo, makedata, save_userinfo, logdata
+    from riot_api.api import nickinfo, url_check
+    from riot_api.name import sumoners
+    from urllib import parse
+
+    # log 기록 클래스 선언
+    log_class = logdata()
+
     print('1')
     conn = psycopg2.connect(
                             host="ec2-52-86-2-228.compute-1.amazonaws.com",
@@ -26,7 +42,8 @@ def result(champ1=None):
     cur = conn.cursor()
     cur.execute("SELECT COUNT('ID') from Log_data") # 로그데이터 저장을 위한 SQL호출
     count = cur.fetchone()[0] # 마지막 저장 로그기록번호
-    print('2')
+
+
     if request.method == 'POST':
         pass
 
@@ -53,59 +70,15 @@ def result(champ1=None):
         ## Get user's nickname
         nick = request.args.get('username')
 
-        import requests
-        import json
-        import time
-        import pprint
-        import pandas as pd
-        #from riot_api.api import url_check
-        from urllib import parse
+        
 
         # Delete space from SummonersNick
-        nick = nick.replace(" ", "") 
-        print('3')
+        nick = nick.replace(" ", "")
+        log_class.insert({"Input_name" : nick})
         # get nickname api
-        url_nick = f'https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/{parse.quote_plus(nick)}'
-        
-        def url_check(url):
-            r = requests.get(url, headers=request_header)
-            if r.status_code == 200: # response가 정상이면 바로 맨 밑으로 이동하여 정상적으로 코드 실행
-                m = 'pass'
-                print('pass')
-                pass
-            elif r.status_code == 403:
-                print('pass')
-                m = 'pass'
-            elif r.status_code == 429:
-                print('api cost full : infinite loop start')
-                start_time = time.time()
-                
-                while True: # 429error가 끝날 때까지 무한 루프
-                    if r.status_code == 429:
-
-                        print('try 10 second wait time')
-                        time.sleep(10)
-                        r = requests.get(url, headers=request_header)
-                        print(r.status_code)
-
-                    elif r.status_code == 200: #다시 response 200이면 loop escape
-                        print('total wait time : ', time.time() - start_time)
-                        print('recovery api cost')
-                        m = 'pass'
-                        break
-
-                    else:
-                        m = 'fail'
-                        break
-            
-            else:
-                m = 'fail'
-
-            return m
-        
+        url_nick = f'https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/{parse.quote_plus(nick)}'        
         # checking url
         m = url_check(url_nick) 
-        print('4')
         ## Start Playing win rate
         if nick == "": # if No enter nickname
             m = '닉네임을 입력하세요'
@@ -115,6 +88,8 @@ def result(champ1=None):
             cur.execute(f"""INSERT INTO log_data("ID", "Input_name")
             VALUES (%s,%s);""", val)
             conn.commit()
+            log_class.insert({"result" : m})
+            save_log(log_class.doc)
 
         else:
             if m == 'fail': # if Not fount summoners
@@ -122,13 +97,21 @@ def result(champ1=None):
                 cur.execute(f"""INSERT INTO log_data("ID", "Input_name")
                 VALUES ({count+1},'{nick}');""")
                 conn.commit()
+                log_class.insert({"result" : m})
+                save_log(log_class.doc)
                 print('소환사를 찾을 수 없습니다.')
 
             elif m == 'pass': # if get Summoners info
+                log_class.insert({"result" : m})
+                user_info_data = nickinfo(nick) #유저정보 적재
+                user = sumoners(user_info_data) #유저정보 객체화
+                
+                save_userinfo(user_info_data) # 유저정보 mongodb저장
+                save_mastery(makedata(user.id, user.mastery)) # 유저 챔피언 정보 mongodb저장
+
                 nick_to_id = requests.get(url_nick, headers=request_header).json()
                 input_id = nick_to_id['id']
                 url_game = f'https://kr.api.riotgames.com/lol/spectator/v4/active-games/by-summoner/{input_id}'
-                print('5')
                 m = url_check(url_game)
                 
                 if m == 'fail': # if Not playing game
@@ -137,11 +120,14 @@ def result(champ1=None):
                     cur.execute(f"""INSERT INTO log_data("ID", "Input_name", "Ingame")
                     VALUES ({count+1},'{nick}',{game});""")
                     conn.commit()
+                    log_class.insert({"ingame" : game})
+                    save_log(log_class.doc)
                     print('소환사가 게임중이 아닙니다')
 
                 elif m == 'pass': # found gamedata
                     data = requests.get(url_game, headers=request_header).json()
                     game = True
+                    log_class.insert({"ingame" : game})
                     dic = []
                     log_data = [count+1, nick, game]  # [ID, SummonersNickname, Nowplay(True/False)]
 
@@ -160,7 +146,7 @@ def result(champ1=None):
                         dic.append(champ_point)
                         log_data.append(champ_point)
 
-                    print(log_data)
+                    
 
                     ## Write ingame player data at Log
                     cur.execute(f"""INSERT INTO log_data("ID", "Input_name","Ingame","1pick_id","1pick","1score","2pick_id","2pick","2score",
@@ -169,6 +155,15 @@ def result(champ1=None):
                                                             "9pick_id","9pick","9score","10pick_id","10pick","10score")
                                                             VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);""", log_data)
                     conn.commit()
+
+                    doc = list()
+                    keys = list(map(lambda x: [f'{x}p_id', f'{x}p', f'{x}score'], range(1,11)))
+                    list(map(lambda x : doc.extend(x), keys))
+                    log_data2 = copy.deepcopy(log_data)
+                    del log_data2[0:3]
+                    {key: value for key, value in zip(doc, log_data2)}
+
+
 
                     import pickle
                     import pandas as pd

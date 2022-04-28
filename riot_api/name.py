@@ -1,17 +1,16 @@
-import imp
-from api import nickinfo, summon_data, actgameinfo
+from riot_api.api import *
 import json
 from pprint import pprint
 
 class sumoners:
-    def __init__(self, name):
-        self.accountId = nickinfo(name)['accountId']
-        self.id = nickinfo(name)['id']
-        self.name = nickinfo(name)['name']
-        self.profileIconId = nickinfo(name)['profileIconId']
-        self.puuid = nickinfo(name)['puuid']
-        self.revisionDate = nickinfo(name)['revisionDate']
-        self.summonerLevel = nickinfo(name)['summonerLevel']
+    def __init__(self, info):
+        self.accountId = info['accountId']
+        self.id = info['id']
+        self.name = info['name']
+        self.profileIconId = info['profileIconId']
+        self.puuid = info['puuid']
+        self.revisionDate = info['revisionDate']
+        self.summonerLevel = info['summonerLevel']
         self.mastery = summon_data(self.id)
 
 class gamedata:

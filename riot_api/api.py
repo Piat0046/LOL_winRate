@@ -8,7 +8,7 @@ request_header = {
                 "Accept-Language": "ko,en-US;q=0.9,en;q=0.8,es;q=0.7",
                 "Accept-Charset": "application/x-www-form-urlencoded; charset=UTF-8",
                 "Origin": "https://developer.riotgames.com",
-                "X-Riot-Token": 'RGAPI-046f6b7b-57d0-46b2-8217-da73fc6024ee'
+                "X-Riot-Token": 'RGAPI-51930c7c-d051-44a4-93e8-fcbb592beb5f'
                 }
 
 def nickinfo(name):
