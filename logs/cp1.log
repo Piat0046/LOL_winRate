@@ -1266,3 +1266,65 @@ INFO:werkzeug:127.0.0.1 - - [29/Apr/2022 03:49:06] "[36mGET /static/img/riot.pn
 [2022-04-29 03:50:08,362] DEBUG in connectionpool: https://kr.api.riotgames.com:443 "GET /lol/spectator/v4/active-games/by-summoner/XnhdEBDrdxzLMqJVhZBnhh6PI5WHJcbU7JZMncss1JBPiw HTTP/1.1" 503 None
 [2022-04-29 03:50:08,754] INFO in _internal: 127.0.0.1 - - [29/Apr/2022 03:50:08] "POST /result HTTP/1.1" 200 -
 [2022-04-29 03:50:08,776] INFO in _internal: 127.0.0.1 - - [29/Apr/2022 03:50:08] "[36mGET /static/img/riot.png HTTP/1.1[0m" 304 -
+[2022-04-29 04:36:03,262] INFO in _internal:  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+[2022-04-29 04:36:13,524] DEBUG in connectionpool: Starting new HTTPS connection (1): kr.api.riotgames.com:443
+[2022-04-29 04:36:14,079] DEBUG in connectionpool: https://kr.api.riotgames.com:443 "GET /lol/summoner/v4/summoners/by-name/%ED%95%AB%EC%83%81%EB%B2%94 HTTP/1.1" 200 None
+[2022-04-29 04:36:14,090] DEBUG in connectionpool: Starting new HTTPS connection (1): kr.api.riotgames.com:443
+[2022-04-29 04:36:14,356] DEBUG in connectionpool: https://kr.api.riotgames.com:443 "GET /lol/summoner/v4/summoners/by-name/%ED%95%AB%EC%83%81%EB%B2%94 HTTP/1.1" 200 None
+[2022-04-29 04:36:14,368] DEBUG in connectionpool: Starting new HTTPS connection (1): kr.api.riotgames.com:443
+[2022-04-29 04:36:14,647] DEBUG in connectionpool: https://kr.api.riotgames.com:443 "GET /lol/champion-mastery/v4/champion-masteries/by-summoner/XnhdEBDrdxzLMqJVhZBnhh6PI5WHJcbU7JZMncss1JBPiw HTTP/1.1" 200 None
+[2022-04-29 04:36:15,556] DEBUG in connectionpool: Starting new HTTPS connection (1): kr.api.riotgames.com:443
+[2022-04-29 04:36:15,841] DEBUG in connectionpool: https://kr.api.riotgames.com:443 "GET /lol/summoner/v4/summoners/by-name/%ED%95%AB%EC%83%81%EB%B2%94 HTTP/1.1" 200 None
+[2022-04-29 04:36:15,851] DEBUG in connectionpool: Starting new HTTPS connection (1): kr.api.riotgames.com:443
+[2022-04-29 04:36:19,193] DEBUG in connectionpool: https://kr.api.riotgames.com:443 "GET /lol/spectator/v4/active-games/by-summoner/XnhdEBDrdxzLMqJVhZBnhh6PI5WHJcbU7JZMncss1JBPiw HTTP/1.1" 503 None
+[2022-04-29 04:36:19,529] INFO in _internal: 127.0.0.1 - - [29/Apr/2022 04:36:19] "POST /result HTTP/1.1" 200 -
+[2022-04-29 04:36:21,420] DEBUG in connectionpool: Starting new HTTPS connection (1): kr.api.riotgames.com:443
+[2022-04-29 04:36:21,711] DEBUG in connectionpool: https://kr.api.riotgames.com:443 "GET /lol/summoner/v4/summoners/by-name/%ED%95%AB%EC%83%81%EB%B2%94 HTTP/1.1" 200 None
+[2022-04-29 04:36:21,723] DEBUG in connectionpool: Starting new HTTPS connection (1): kr.api.riotgames.com:443
+[2022-04-29 04:36:22,266] DEBUG in connectionpool: https://kr.api.riotgames.com:443 "GET /lol/summoner/v4/summoners/by-name/%ED%95%AB%EC%83%81%EB%B2%94 HTTP/1.1" 200 None
+[2022-04-29 04:36:22,280] DEBUG in connectionpool: Starting new HTTPS connection (1): kr.api.riotgames.com:443
+[2022-04-29 04:36:22,579] DEBUG in connectionpool: https://kr.api.riotgames.com:443 "GET /lol/champion-mastery/v4/champion-masteries/by-summoner/XnhdEBDrdxzLMqJVhZBnhh6PI5WHJcbU7JZMncss1JBPiw HTTP/1.1" 200 None
+[2022-04-29 04:36:23,299] DEBUG in connectionpool: Starting new HTTPS connection (1): kr.api.riotgames.com:443
+[2022-04-29 04:36:23,582] DEBUG in connectionpool: https://kr.api.riotgames.com:443 "GET /lol/summoner/v4/summoners/by-name/%ED%95%AB%EC%83%81%EB%B2%94 HTTP/1.1" 200 None
+[2022-04-29 04:36:23,596] DEBUG in connectionpool: Starting new HTTPS connection (1): kr.api.riotgames.com:443
+[2022-04-29 04:36:26,978] DEBUG in connectionpool: https://kr.api.riotgames.com:443 "GET /lol/spectator/v4/active-games/by-summoner/XnhdEBDrdxzLMqJVhZBnhh6PI5WHJcbU7JZMncss1JBPiw HTTP/1.1" 503 None
+[2022-04-29 04:36:27,333] INFO in _internal: 127.0.0.1 - - [29/Apr/2022 04:36:27] "POST /result HTTP/1.1" 200 -
+[2022-04-29 04:36:27,356] INFO in _internal: 127.0.0.1 - - [29/Apr/2022 04:36:27] "[36mGET /static/img/riot.png HTTP/1.1[0m" 304 -
+[2022-04-29 04:44:43,184] INFO in main_views: INFO 레벨로 출력
+[2022-04-29 04:44:43,197] INFO in _internal: 127.0.0.1 - - [29/Apr/2022 04:44:43] "POST / HTTP/1.1" 200 -
+[2022-04-29 04:44:43,213] INFO in _internal: 127.0.0.1 - - [29/Apr/2022 04:44:43] "[36mGET /static/img/riot.png HTTP/1.1[0m" 304 -
+[2022-04-29 04:44:45,197] DEBUG in connectionpool: Starting new HTTPS connection (1): kr.api.riotgames.com:443
+[2022-04-29 04:44:45,487] DEBUG in connectionpool: https://kr.api.riotgames.com:443 "GET /lol/summoner/v4/summoners/by-name/%ED%95%AB%EC%83%81%EB%B2%94 HTTP/1.1" 200 None
+[2022-04-29 04:44:45,501] DEBUG in connectionpool: Starting new HTTPS connection (1): kr.api.riotgames.com:443
+[2022-04-29 04:44:45,771] DEBUG in connectionpool: https://kr.api.riotgames.com:443 "GET /lol/summoner/v4/summoners/by-name/%ED%95%AB%EC%83%81%EB%B2%94 HTTP/1.1" 200 None
+[2022-04-29 04:44:45,786] DEBUG in connectionpool: Starting new HTTPS connection (1): kr.api.riotgames.com:443
+[2022-04-29 04:44:46,082] DEBUG in connectionpool: https://kr.api.riotgames.com:443 "GET /lol/champion-mastery/v4/champion-masteries/by-summoner/XnhdEBDrdxzLMqJVhZBnhh6PI5WHJcbU7JZMncss1JBPiw HTTP/1.1" 200 None
+[2022-04-29 04:44:46,923] DEBUG in connectionpool: Starting new HTTPS connection (1): kr.api.riotgames.com:443
+[2022-04-29 04:44:47,202] DEBUG in connectionpool: https://kr.api.riotgames.com:443 "GET /lol/summoner/v4/summoners/by-name/%ED%95%AB%EC%83%81%EB%B2%94 HTTP/1.1" 200 None
+[2022-04-29 04:44:47,213] DEBUG in connectionpool: Starting new HTTPS connection (1): kr.api.riotgames.com:443
+[2022-04-29 04:44:50,600] DEBUG in connectionpool: https://kr.api.riotgames.com:443 "GET /lol/spectator/v4/active-games/by-summoner/XnhdEBDrdxzLMqJVhZBnhh6PI5WHJcbU7JZMncss1JBPiw HTTP/1.1" 503 None
+[2022-04-29 04:44:50,961] INFO in _internal: 127.0.0.1 - - [29/Apr/2022 04:44:50] "POST /result HTTP/1.1" 200 -
+[2022-04-29 04:44:50,975] INFO in _internal: 127.0.0.1 - - [29/Apr/2022 04:44:50] "[36mGET /static/img/riot.png HTTP/1.1[0m" 304 -
+[2022-04-29 04:44:54,256] INFO in main_views: INFO 레벨로 출력
+[2022-04-29 04:44:54,257] INFO in _internal: 127.0.0.1 - - [29/Apr/2022 04:44:54] "POST / HTTP/1.1" 200 -
+[2022-04-29 04:44:54,269] INFO in _internal: 127.0.0.1 - - [29/Apr/2022 04:44:54] "[36mGET /static/img/riot.png HTTP/1.1[0m" 304 -
+[2022-04-29 05:07:51,223] INFO in _internal:  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+[2022-04-29 05:07:59,906] DEBUG in connectionpool: Starting new HTTPS connection (1): kr.api.riotgames.com:443
+[2022-04-29 05:08:00,123] DEBUG in connectionpool: https://kr.api.riotgames.com:443 "GET /lol/summoner/v4/summoners/by-name/ HTTP/1.1" 403 None
+[2022-04-29 05:08:00,593] INFO in _internal: 127.0.0.1 - - [29/Apr/2022 05:08:00] "POST /result HTTP/1.1" 200 -
+[2022-04-29 05:08:00,613] INFO in _internal: 127.0.0.1 - - [29/Apr/2022 05:08:00] "[36mGET /static/img/riot.png HTTP/1.1[0m" 304 -
+[2022-04-29 05:08:01,821] INFO in main_views: INFO 레벨로 출력
+[2022-04-29 05:08:01,826] INFO in _internal: 127.0.0.1 - - [29/Apr/2022 05:08:01] "POST / HTTP/1.1" 200 -
+[2022-04-29 05:08:01,845] INFO in _internal: 127.0.0.1 - - [29/Apr/2022 05:08:01] "[36mGET /static/img/riot.png HTTP/1.1[0m" 304 -
+[2022-04-29 05:08:03,626] DEBUG in connectionpool: Starting new HTTPS connection (1): kr.api.riotgames.com:443
+[2022-04-29 05:08:04,104] DEBUG in connectionpool: https://kr.api.riotgames.com:443 "GET /lol/summoner/v4/summoners/by-name/%ED%95%AB%EC%83%81%EB%B2%94 HTTP/1.1" 200 None
+[2022-04-29 05:08:04,114] DEBUG in connectionpool: Starting new HTTPS connection (1): kr.api.riotgames.com:443
+[2022-04-29 05:08:05,101] DEBUG in connectionpool: https://kr.api.riotgames.com:443 "GET /lol/summoner/v4/summoners/by-name/%ED%95%AB%EC%83%81%EB%B2%94 HTTP/1.1" 200 None
+[2022-04-29 05:08:05,113] DEBUG in connectionpool: Starting new HTTPS connection (1): kr.api.riotgames.com:443
+[2022-04-29 05:08:05,382] DEBUG in connectionpool: https://kr.api.riotgames.com:443 "GET /lol/champion-mastery/v4/champion-masteries/by-summoner/XnhdEBDrdxzLMqJVhZBnhh6PI5WHJcbU7JZMncss1JBPiw HTTP/1.1" 200 None
+[2022-04-29 05:08:06,087] DEBUG in connectionpool: Starting new HTTPS connection (1): kr.api.riotgames.com:443
+[2022-04-29 05:08:06,343] DEBUG in connectionpool: https://kr.api.riotgames.com:443 "GET /lol/summoner/v4/summoners/by-name/%ED%95%AB%EC%83%81%EB%B2%94 HTTP/1.1" 200 None
+[2022-04-29 05:08:06,353] DEBUG in connectionpool: Starting new HTTPS connection (1): kr.api.riotgames.com:443
+[2022-04-29 05:08:09,598] DEBUG in connectionpool: https://kr.api.riotgames.com:443 "GET /lol/spectator/v4/active-games/by-summoner/XnhdEBDrdxzLMqJVhZBnhh6PI5WHJcbU7JZMncss1JBPiw HTTP/1.1" 503 None
+[2022-04-29 05:08:09,987] INFO in _internal: 127.0.0.1 - - [29/Apr/2022 05:08:09] "POST /result HTTP/1.1" 200 -
+[2022-04-29 05:08:10,007] INFO in _internal: 127.0.0.1 - - [29/Apr/2022 05:08:10] "[36mGET /static/img/riot.png HTTP/1.1[0m" 304 -
